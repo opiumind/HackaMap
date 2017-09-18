@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!--<meta charset="UTF-8">-->
+    <title>HackaMap</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <!--<link rel="stylesheet" type="text/css"-->
+    <!--href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />-->
+
+    <link rel="stylesheet" th:href="@{/styles/main.css}" href="../../styles/main.css" />
+    <link rel="stylesheet" th:href="@{/styles/auth.css}" href="../../styles/auth.css" />
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar_container">
+            <div class="navbar-header">
+                <a class="navbar_brand" href="/">
+                    <span>HackaMap</span>
+                </a>
+            </div>
+            <!--<div id="navbar" class="collapse navbar-collapse">-->
+            <!--<ul class="nav navbar-nav">-->
+            <!--<li class="active"><a href="#">Home</a></li>-->
+            <!--<li><a href="#about">About</a></li>-->
+            <!--</ul>-->
+            <!--</div>-->
+        </div>
+    </nav>
+
+    <!--<div class="container">-->
+
+    <!--Sign Up form-->
+    <div class="auth">
+        <a href="/signin">Sign In</a>
+        <h2>Sign Up</h2>
+        <p class="auth_note app_note">(All fields are required)</p>
+
+        <form class="auth_form" action="#" th:action="@{/registration}" th:object="${userForm}" method="post">
+            <input th:class="${#fields.hasErrors('firstName')} ? 'app_error-field' : ''" th:field="*{firstName}" type="text" placeholder="First name" value="" />
+            <p class="auth_error-msg" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></p>
+
+            <input th:class="${#fields.hasErrors('lastName')} ? 'app_error-field' : ''" th:field="*{lastName}" type="text" placeholder="Last name" />
+            <p class="auth_error-msg" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></p>
+
+            <label class="auth_label">Date of birth:</label>
+            <input th:class="${#fields.hasErrors('dob')} ? 'app_error-field' : ''" th:field="*{dob}" class="auth_datepicker" type="date" placeholder="Date of birth:" />
+            <p class="auth_error-msg" th:if="${#fields.hasErrors('dob')}" th:errors="*{dob}"></p>
+
+            <select th:class="${#fields.hasErrors('gender')} ? 'app_error-field' : ''" th:field="*{gender}">
+                <!--<div>-->
+                <option class="app_default-select-option" value="" selected="selected">Gender</option>
+                <option th:each="gender : ${T(csc202.finalprjct.entity.Gender).values()}"
+                        th:value="${gender}"
+                        th:text="${gender.text}"
+                >
+                </option>
+                <!--</div>-->
+            </select>
+            <p class="auth_error-msg" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></p>
+
+            <input th:class="${#fields.hasErrors('username')} ? 'app_error-field' : ''" th:field="*{username}" type="text" placeholder="Username" />
+            <p class="auth_error-msg" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
+
+            <input th:class="${#fields.hasErrors('email')} ? 'app_error-field' : ''" th:field="*{email}" type="email" placeholder="E-mail" />
+            <p class="auth_error-msg" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
+
+            <input th:class="${#fields.hasErrors('password')} ? 'app_error-field' : ''" th:field="*{password}" type="password" placeholder="Password" />
+            <p class="auth_error-msg" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
+
+            <input th:class="${#fields.hasErrors('confirmPassword')} ? 'app_error-field' : ''" th:field="*{confirmPassword}" type="password" placeholder="Confirm password" />
+            <p class="auth_error-msg" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}"></p>
+
+            <input class="auth_submit-btn" type="submit" title="Submit" />
+        </form>
+
+    </div>
+
+
+    <!--</div>-->
+
+
+    <!-- /.container -->
+
+    <script type="text/javascript"
+            src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+</body>
+</html>
