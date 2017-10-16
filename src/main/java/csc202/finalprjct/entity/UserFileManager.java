@@ -1,20 +1,25 @@
 package csc202.finalprjct.entity;
 
+import csc202.finalprjct.map.SuperHashMap;
+import csc202.finalprjct.map.SuperMap;
+
 import java.io.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 public class UserFileManager {
     static File usersFile = new File("users.txt");
 
-    public static Map<String,User> readUsers() throws FileNotFoundException {
+    public static SuperMap<String,User> readUsers() throws FileNotFoundException {
         String readText;
-        Map<String, User> usersMap = new HashMap<>();
+        SuperMap<String, User> usersMap = new SuperHashMap<>();
         try (Scanner input = new Scanner(usersFile)) {
-            readText = input.useDelimiter("\\Z").next();
+            if (input.hasNext()) {
+                readText = input.useDelimiter("\\Z").next();
+            } else {
+                return usersMap;
+            }
         }
 
         String[] usersAsArray = readText.split("\n");
@@ -29,13 +34,14 @@ public class UserFileManager {
         return usersMap;
     }
 
-    public static void writeUsers(Map<String,User> users) {
+    public static void writeUsers(SuperMap<String,User> users) {
         BufferedWriter bw = null;
         FileWriter fw = null;
         StringBuffer usersAsString = new StringBuffer();
 
         for (User user:users.values()) {
             usersAsString.append(user.toString());
+            usersAsString.append("\n");
         }
 
         try {

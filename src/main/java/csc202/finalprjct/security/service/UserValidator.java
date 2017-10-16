@@ -61,7 +61,7 @@ public class UserValidator implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "NotEmpty");
         if (user != null) {
             if (user.getPassword() != null
-                    && !user.getPassword().matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])([.@#$%^&+=]*){6,}$")) {
+                    && !user.getPassword().matches("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{6,}$")) {
                 errors.rejectValue("password", "Rules.userForm.password");
             }
         }

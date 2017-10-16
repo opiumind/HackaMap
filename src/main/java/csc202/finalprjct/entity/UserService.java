@@ -1,15 +1,15 @@
 package csc202.finalprjct.entity;
 
+import csc202.finalprjct.map.SuperHashMap;
+import csc202.finalprjct.map.SuperMap;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
 import java.io.FileNotFoundException;
-import java.util.HashMap;
-import java.util.Map;
 
 @Service
 public class UserService {
-    Map<String, User> users = new HashMap<>();
+    SuperMap<String, User> users = new SuperHashMap<>();
 
     @PostConstruct
     public void init() {
