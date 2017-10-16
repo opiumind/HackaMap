@@ -1,0 +1,29 @@
+SuperMap
+--------------------------
++ public int size()
++ public V get(K key)
++ public boolean containsKey(K key)
++ public boolean containsValue(V value)
++ public V put(K key, V value)
++ public V remove(K key)
++ public void clear()
++ public Collection<V> values()
+
+
+
+SuperHashMap<K,V> implements SuperMap<K,V>
+--------------------------
+- int arraySize
+- int size
+- List<SuperEntry>[] entries
+--------------------------
++ public int size()
++ public V get(K key)
++ public boolean containsKey(K key)
++ public boolean containsValue(V value)
++ public V put(K key, V value)
++ private boolean needToIncreaseArraySize()
++ private void increaseArraySize()
++ public V remove(K key)
++ public void clear()
++ public Collection<V> values()

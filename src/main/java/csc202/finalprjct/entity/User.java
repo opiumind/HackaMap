@@ -5,8 +5,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.HashMap;
 
-public class User {
+public class User implements Comparable {
     private String username;
     private String email;
     private Phone phone;
@@ -26,6 +27,32 @@ public class User {
         this.phone = phone;
         this.password = password;
         this.profilePhotoUrl = profilePhotoUrl;
+    }
+
+    @Override
+    public int compareTo(Object o) throws ClassCastException {
+        if (o instanceof User) {
+            User userToCompare = (User)o;
+            return this.username.compareTo(userToCompare.username);
+        }
+        throw new ClassCastException("Can compare to only instances of User");
+    }
+
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        User user = (User) o;
+
+        return username.equals(user.username);
+    }
+
+    @Override
+    public int hashCode() {
+        return username.hashCode();
     }
 
     public String getUsername() {

@@ -23,26 +23,10 @@ public interface SuperMap<K,V> {
      * Returns the value to which the specified key is mapped,
      * or {@code null} if this map contains no mapping for the key.
      *
-     * <p>More formally, if this map contains a mapping from a key
-     * {@code k} to a value {@code v} such that {@code (key==null ? k==null :
-     * key.equals(k))}, then this method returns {@code v}; otherwise
-     * it returns {@code null}.  (There can be at most one such mapping.)
-     *
-     * <p>If this map permits null values, then a return value of
-     * {@code null} does not <i>necessarily</i> indicate that the map
-     * contains no mapping for the key; it's also possible that the map
-     * explicitly maps the key to {@code null}.  The {@link #containsKey
-     * containsKey} operation may be used to distinguish these two cases.
      *
      * @param key the key whose associated value is to be returned
      * @return the value to which the specified key is mapped, or
      *         {@code null} if this map contains no mapping for the key
-     * @throws ClassCastException if the key is of an inappropriate type for
-     *         this map
-     * (<a href="{@docRoot}/java/util/Collection.html#optional-restrictions">optional</a>)
-     * @throws NullPointerException if the specified key is null and this map
-     *         does not permit null keys
-     * (<a href="{@docRoot}/java/util/Collection.html#optional-restrictions">optional</a>)
      */
     V get(K key);
 
@@ -56,9 +40,6 @@ public interface SuperMap<K,V> {
      * @param key key whose presence in this map is to be tested
      * @return <tt>true</tt> if this map contains a mapping for the specified
      *         key
-     * @throws ClassCastException if the key is of an inappropriate type for
-     *         this map
-     * (<a href="{@docRoot}/java/util/Collection.html#optional-restrictions">optional</a>)
      * @throws NullPointerException if the specified key is null and this map
      *         does not permit null keys
      * (<a href="{@docRoot}/java/util/Collection.html#optional-restrictions">optional</a>)
@@ -76,12 +57,6 @@ public interface SuperMap<K,V> {
      * @param value value whose presence in this map is to be tested
      * @return <tt>true</tt> if this map maps one or more keys to the
      *         specified value
-     * @throws ClassCastException if the value is of an inappropriate type for
-     *         this map
-     * (<a href="{@docRoot}/java/util/Collection.html#optional-restrictions">optional</a>)
-     * @throws NullPointerException if the specified value is null and this
-     *         map does not permit null values
-     * (<a href="{@docRoot}/java/util/Collection.html#optional-restrictions">optional</a>)
      */
     boolean containsValue(V value);
 
@@ -100,14 +75,6 @@ public interface SuperMap<K,V> {
      *         (A <tt>null</tt> return can also indicate that the map
      *         previously associated <tt>null</tt> with <tt>key</tt>,
      *         if the implementation supports <tt>null</tt> values.)
-     * @throws UnsupportedOperationException if the <tt>put</tt> operation
-     *         is not supported by this map
-     * @throws ClassCastException if the class of the specified key or value
-     *         prevents it from being stored in this map
-     * @throws NullPointerException if the specified key or value is null
-     *         and this map does not permit null keys or values
-     * @throws IllegalArgumentException if some property of the specified key
-     *         or value prevents it from being stored in this map
      */
     V put(K key, V value);
 
@@ -132,8 +99,6 @@ public interface SuperMap<K,V> {
      * @param key key whose mapping is to be removed from the map
      * @return the previous value associated with <tt>key</tt>, or
      *         <tt>null</tt> if there was no mapping for <tt>key</tt>.
-     * @throws UnsupportedOperationException if the <tt>remove</tt> operation
-     *         is not supported by this map
      * @throws ClassCastException if the key is of an inappropriate type for
      *         this map
      * (<a href="{@docRoot}/java/util/Collection.html#optional-restrictions">optional</a>)
@@ -147,8 +112,6 @@ public interface SuperMap<K,V> {
      * Removes all of the mappings from this map (optional operation).
      * The map will be empty after this call returns.
      *
-     * @throws UnsupportedOperationException if the <tt>clear</tt> operation
-     *         is not supported by this map
      */
     void clear();
 
