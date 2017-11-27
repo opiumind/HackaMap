@@ -3,9 +3,7 @@ package csc202.finalprjct.entity;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.Date;
-import java.util.HashMap;
 
 public class User implements Comparable {
     private String username;
@@ -17,16 +15,29 @@ public class User implements Comparable {
     private String profilePhotoUrl;
     private Person person;
 
+    // Empty constructor
     public User() {
         this.person = new Person();
     }
 
-    public User(String username, String email, Phone phone, String password, String profilePhotoUrl) {
+    // Full constructor
+    public User(String username, String email, Phone phone, String password, String confirmPassword, String profilePhotoUrl, Person person) {
         this.username = username;
         this.email = email;
         this.phone = phone;
         this.password = password;
+        this.confirmPassword = confirmPassword;
         this.profilePhotoUrl = profilePhotoUrl;
+        this.person = person;
+    }
+
+    // Constructor with only required fields
+    public User(String username, String email, String password, String confirmPassword, Person person) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+        this.confirmPassword = confirmPassword;
+        this.person = person;
     }
 
     @Override
@@ -37,8 +48,6 @@ public class User implements Comparable {
         }
         throw new ClassCastException("Can compare to only instances of User");
     }
-
-
 
     @Override
     public boolean equals(Object o) {
@@ -52,6 +61,9 @@ public class User implements Comparable {
 
     @Override
     public int hashCode() {
+        if (username == null) {
+            return 0;
+        }
         return username.hashCode();
     }
 
@@ -153,6 +165,55 @@ public class User implements Comparable {
         person.setSsn(ssn);
     }
 
+    public String getStreet() {
+        return person.getStreet();
+    }
+
+    public void setStreet(String street) {
+        person.setStreet(street);
+    }
+
+    public String getCity() {
+        return person.getCity();
+    }
+
+    public void setCity(String city) {
+        person.setCity(city);
+    }
+
+    public String getState() {
+        return person.getState();
+    }
+
+    public void setState(String state) {
+        person.setState(state);
+    }
+
+    public Integer getHouse() {
+        return person.getHouse();
+    }
+
+    public void setHouse(Integer house) {
+        person.setHouse(house);
+    }
+
+    public Integer getZip() {
+        return person.getZip();
+    }
+
+    public void setZip(Integer zip) {
+        person.setZip(zip);
+    }
+
+    public Location getLocation() {
+        return person.getLocation();
+    }
+
+    public void setLocation(Location location) {
+        person.setLocation(location);
+    }
+
+
     public String toString() {
         StringBuffer userAsString = new StringBuffer();
         if (getUsername() != null) {
@@ -204,7 +265,35 @@ public class User implements Comparable {
         if (getSsn() != 0) {
             userAsString.append(getSsn());
         }
+        userAsString.append(":");
+        if (!getState().isEmpty()) {
+            userAsString.append(getState());
+        }
+        userAsString.append(":");
+        if (!getCity().isEmpty()) {
+            userAsString.append(getCity());
+        }
+        userAsString.append(":");
+        if (!getStreet().isEmpty()) {
+            userAsString.append(getStreet());
+        }
+        userAsString.append(":");
+        if (getHouse() != 0) {
+            userAsString.append(getHouse());
+        }
+        userAsString.append(":");
+        if (getZip() != 0) {
+            userAsString.append(getZip());
+        }
+        userAsString.append(":");
+        if (getLocation() != null) {
+            userAsString.append(getLocation().getLatitude());
+            userAsString.append(";");
+            userAsString.append(getLocation().getLongitude());
+        }
+
 
         return userAsString.toString();
     }
+
 }

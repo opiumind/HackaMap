@@ -40,38 +40,89 @@ h2{
 
 .header {
     background-color: #F0BD1F;
-    color: #2B2B2B;
-    margin-bottom: 20px;
+    /*color: #2B2B2B;*/
+    margin-bottom: 70px;
+
 }
 
-    .header_container {
-        width: auto;
-        min-width: 400px;
-        margin: 0 auto;
-    }
+    /*.header_container {*/
+        /*width: auto;*/
+        /*min-width: 400px;*/
+        /*margin: 0 auto;*/
+    /*}*/
 
     .header_head {
         display: inline-block;
-        padding: 30px 15px;
+        vertical-align: top;
+        font-size: 0;
+        padding: 0 70px;
     }
 
-    .header_head-brand {
-        color: #2B2B2B;
-        font-size: 34px;
-        font-weight: bold;
-    }
-
-    .header_nav {
-        display: inline-block;
-        right: 0;
-        height: 100%;
-        padding: 0;
-        margin: 0;
-    }
-
-        .header_nav-item {
-            display: inline-block;
-            height: 100%;
-            padding: 30px 15px;
-            border-left: 1px rgba(0,0,0,0.3) solid ;
+        .header-head_text {
+            line-height: 80px;
+            color: #ffffff;
+            font-size: 40px;
+            font-weight: bold;
+            /*text-shadow: #009EA7 0 0 3px;*/
         }
+
+            /*.header_head-brand {*/
+                /*color: #2B2B2B;*/
+                /*font-size: 34px;*/
+                /*font-weight: bold;*/
+            /*}*/
+
+    .header_nav-container {
+        display: inline-block;
+        vertical-align: top;
+        font-size: 0;
+    }
+
+        .header_nav {
+            display: inline-block;
+            line-height: 100%;
+            right: 0;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+            .header_nav-item {
+                display: inline-block;
+                list-style: none;
+                /*height: 100%;*/
+                padding: 0 20px;
+                border-left: 1px rgba(0,0,0,0.3) solid ;
+            }
+
+            .header_nav-item:last-child {
+                border-right: 1px rgba(0,0,0,0.3) solid ;
+            }
+
+                .header_nav-item-link {
+                    display: inline-block;
+                    padding: 0 25px;
+                    color: #333333;
+                }
+
+                .header_nav-item-link:hover {
+                    color: #ffffff;
+                }
+
+                    .nav-item_text {
+                        line-height: 80px;
+                        font-size: 20px;
+                    }
+
+    .main-about {
+        color: #009EA7;
+        font-size: 73px;
+        font-weight: bold;
+        text-shadow: #D4D4D4 0px 0px 5px;
+        /*text-transform: uppercase;*/
+        width: 60%;
+        margin: auto;
+        /*text-align: center;*/
+        padding: 55px;
+        box-shadow: #F48691 -9px 27px 115px 0px;
+    }

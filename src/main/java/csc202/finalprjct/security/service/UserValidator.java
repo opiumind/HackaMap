@@ -42,6 +42,11 @@ public class UserValidator implements Validator {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "gender", "NotEmpty");
 //        Email
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, "email", "NotEmpty");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "state", "NotEmpty");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "city", "NotEmpty");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "street", "NotEmpty");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "house", "NotEmpty");
+        ValidationUtils.rejectIfEmptyOrWhitespace(errors, "zip", "NotEmpty");
 //        if (user.getLastName().length() < 1) {
 //            errors.rejectValue("email", "Size.userForm.email");
 //        }

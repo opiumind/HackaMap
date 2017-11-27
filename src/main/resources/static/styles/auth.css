@@ -7,6 +7,19 @@
 
 }
 
+    .auth_link {
+        float: right;
+        height: 48px;
+        line-height: 48px;
+        text-decoration: underline;
+        color: #636363;
+        font-weight: bold;
+    }
+
+    .auth_link:hover {
+        color: #EF6653;
+    }
+
     .auth_note {
         margin: 0 0 10px;
     }

@@ -8,30 +8,90 @@
     <!--href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />-->
 
     <link rel="stylesheet" th:href="@{/styles/main.css}" href="../../styles/main.css" />
-</head>
-<body>
-    <div th:replace="header :: header">...</div>
-    <!--<nav class="navbar">-->
-        <!--<div class="navbar_container">-->
-            <!--<div class="navbar-header">-->
-                <!--<a class="navbar_brand" href="/">-->
-                    <!--<span>HackaMap</span>-->
-                <!--</a>-->
-            <!--</div>-->
-            <!--&lt;!&ndash;<div id="navbar" class="collapse navbar-collapse">&ndash;&gt;-->
-            <!--&lt;!&ndash;<ul class="nav navbar-nav">&ndash;&gt;-->
-            <!--&lt;!&ndash;<li class="active"><a href="#">Home</a></li>&ndash;&gt;-->
-            <!--&lt;!&ndash;<li><a href="#about">About</a></li>&ndash;&gt;-->
-            <!--&lt;!&ndash;</ul>&ndash;&gt;-->
-            <!--&lt;!&ndash;</div>&ndash;&gt;-->
-        <!--</div>-->
-    <!--</nav>-->
+    <link rel="stylesheet" th:href="@{/styles/content.css}" href="../../styles/content.css" />
+    <style type="text/css">
+        div#map_container{
+            width:100%;
+            height:350px;
+        }
+    </style>
+    <script type="text/javascript"
+            src="http://maps.googleapis.com/maps/api/js?sensor=false&amp;key=AIzaSyDVoJ4r6a3pXUKK1sgkCCPUfMGVYLrUTzU"></script>
 
-    <div class="starter-template">
-        <h1>All hackathons on map</h1>
-        <h2>
-            <span th:text="'Message: ' + ${message}"></span>
-        </h2>
+    <script type="text/javascript">
+      function loadMap() {
+        var latlng = new google.maps.LatLng(38.84000845512474, -77.11419582366943);
+        var myOptions = {
+          zoom: 4,
+          center: latlng,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_container"),myOptions);
+
+        var marker = new google.maps.Marker({
+          position: latlng,
+          map: map,
+          title:"Shout Out For NOVA!"
+        });
+
+      }
+    </script>
+</head>
+<body onload="loadMap()">
+    <div th:replace="header :: header">...</div>
+
+    <!--<div class="">-->
+        <!--<h2>-->
+            <!--<span th:text="'Message: ' + ${message}"></span>-->
+        <!--</h2>-->
+    <!--</div>-->
+
+    <div class="map" id="map_container"></div>
+    <div class="content">
+        <div class="content_result">
+            <ul class="result_list">
+                <li class="result-list_item" th:each="hackathon : ${hackathonsList}">
+                    <div class="result-item_main-info">
+                    <!--<img class="result-item_img" src="" />-->
+
+                        <p class="result-item_start-date" th:text="${hackathon.startDate}"></p>
+                        <a th:href="${hackathon.url}">
+                            <h4 class="result-item_title" th:text="${hackathon.title}"></h4>
+                        </a>
+                        <p class="result-item_note" th:if="${hackathon.notes} != ''" th:text="${hackathon.notes}"></p>
+                    </div>
+                    <div class="result-item_aside">
+                        <p class="result-item_city" th:text="${hackathon.city}"></p>
+                        <p class="result-item_aside" th:if="${hackathon.distanceFromUser} != null">
+                            (<span class="" th:if="${hackathon.distanceFromUser} != null" th:text="${hackathon.distanceFromUser}"></span>&nbsp;m)
+                        </p>
+                        <div class="result-item_social-links">
+                            <a class="result-item_social-link" th:if="${hackathon.facebookUrl} != ''" th:href="${hackathon.facebookUrl}">
+                                <img class="result-item_social-img" src="/../images/facebook-icon.png" />
+                            </a>
+                            <a class="result-item_social-link" th:if="${hackathon.googlePlusUrl} != ''" th:href="${hackathon.googlePlusUrl}">
+                                <img class="result-item_social-img" src="/../images/google-plus-icon.png" />
+                            </a>
+                            <a class="result-item_social-link" th:if="${hackathon.twitterUrl} != ''" th:href="${hackathon.twitterUrl}">
+                                <img class="result-item_social-img" src="/../images/twitter-icon.png" />
+                            </a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="content_filters">
+            <div class="settings">
+                <h3 class="settings_title">Sort by</h3>
+                <a class="settings_button" href="/welcome/sortedByDistance">distance from me (by car)</a>
+                <a class="settings_button">prize</a>
+            </div>
+            <form class="filters_form">
+                <h3 class="settings_title">Filters</h3>
+                <input class="filters_checkbox" type="checkbox" />
+                <label class="filters_label">Only with prizes</label>
+            </form>
+        </div>
     </div>
 </body>
 </html>

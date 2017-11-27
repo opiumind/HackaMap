@@ -13,41 +13,50 @@
 </head>
 <body>
     <div th:replace="header :: header">...</div>
-    <!--<nav class="navbar">-->
-        <!--<div class="navbar_container">-->
-            <!--<div class="navbar-header">-->
-                <!--<a class="navbar_brand" href="/">-->
-                    <!--<span>HackaMap</span>-->
-                <!--</a>-->
-            <!--</div>-->
-            <!--&lt;!&ndash;<div id="navbar" class="collapse navbar-collapse">&ndash;&gt;-->
-            <!--&lt;!&ndash;<ul class="nav navbar-nav">&ndash;&gt;-->
-            <!--&lt;!&ndash;<li class="active"><a href="#">Home</a></li>&ndash;&gt;-->
-            <!--&lt;!&ndash;<li><a href="#about">About</a></li>&ndash;&gt;-->
-            <!--&lt;!&ndash;</ul>&ndash;&gt;-->
-            <!--&lt;!&ndash;</div>&ndash;&gt;-->
-        <!--</div>-->
-    <!--</nav>-->
 
     <!--<div class="container">-->
 
     <!--Sign Up form-->
     <div class="auth">
-        <a href="/signin">Sign In</a>
-        <h2>Sign Up</h2>
+        <a class="auth_link" href="/signin">Sign In</a>
+        <h2 class="auth_header">Sign Up</h2>
         <p class="auth_note app_note">(All fields are required)</p>
 
         <form class="auth_form" action="#" th:action="@{/registration}" th:object="${userForm}" method="post">
+            <!--// First name-->
             <input th:class="${#fields.hasErrors('firstName')} ? 'app_error-field' : ''" th:field="*{firstName}" type="text" placeholder="First name" value="" />
             <p class="auth_error-msg" th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></p>
 
+            <!--// Last name-->
             <input th:class="${#fields.hasErrors('lastName')} ? 'app_error-field' : ''" th:field="*{lastName}" type="text" placeholder="Last name" />
             <p class="auth_error-msg" th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></p>
 
+            <!--// Date of birth-->
             <label class="auth_label">Date of birth:</label>
             <input th:class="${#fields.hasErrors('dob')} ? 'app_error-field' : ''" th:field="*{dob}" class="auth_datepicker" type="date" placeholder="Date of birth:" />
             <p class="auth_error-msg" th:if="${#fields.hasErrors('dob')}" th:errors="*{dob}"></p>
 
+            <!--// House/Building #-->
+            <input th:class="${#fields.hasErrors('house')} ? 'app_error-field' : ''" th:field="*{house}" type="number" placeholder="House/Building #" />
+            <p class="auth_error-msg" th:if="${#fields.hasErrors('house')}" th:errors="*{house}"></p>
+
+            <!--// Street-->
+            <input th:class="${#fields.hasErrors('street')} ? 'app_error-field' : ''" th:field="*{street}" type="text" placeholder="Street" />
+            <p class="auth_error-msg" th:if="${#fields.hasErrors('street')}" th:errors="*{street}"></p>
+
+            <!--// City-->
+            <input th:class="${#fields.hasErrors('city')} ? 'app_error-field' : ''" th:field="*{city}" type="text" placeholder="City" />
+            <p class="auth_error-msg" th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></p>
+
+            <!--// State-->
+            <input th:class="${#fields.hasErrors('state')} ? 'app_error-field' : ''" th:field="*{state}" type="text" placeholder="State" />
+            <p class="auth_error-msg" th:if="${#fields.hasErrors('state')}" th:errors="*{state}"></p>
+
+            <!--// ZIP code-->
+            <input th:class="${#fields.hasErrors('zip')} ? 'app_error-field' : ''" th:field="*{zip}" type="number" placeholder="ZIP code" />
+            <p class="auth_error-msg" th:if="${#fields.hasErrors('zip')}" th:errors="*{zip}"></p>
+
+            <!--// Gender-->
             <select th:class="${#fields.hasErrors('gender')} ? 'app_error-field' : ''" th:field="*{gender}">
                 <!--<div>-->
                 <option class="app_default-select-option" value="" selected="selected">Gender</option>
@@ -60,18 +69,23 @@
             </select>
             <p class="auth_error-msg" th:if="${#fields.hasErrors('gender')}" th:errors="*{gender}"></p>
 
+            <!--// Username-->
             <input th:class="${#fields.hasErrors('username')} ? 'app_error-field' : ''" th:field="*{username}" type="text" placeholder="Username" />
             <p class="auth_error-msg" th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></p>
 
+            <!--// Email-->
             <input th:class="${#fields.hasErrors('email')} ? 'app_error-field' : ''" th:field="*{email}" type="email" placeholder="E-mail" />
             <p class="auth_error-msg" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></p>
 
+            <!--// Password-->
             <input th:class="${#fields.hasErrors('password')} ? 'app_error-field' : ''" th:field="*{password}" type="password" placeholder="Password" />
             <p class="auth_error-msg" th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></p>
 
+            <!--// Confirm password-->
             <input th:class="${#fields.hasErrors('confirmPassword')} ? 'app_error-field' : ''" th:field="*{confirmPassword}" type="password" placeholder="Confirm password" />
             <p class="auth_error-msg" th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}"></p>
 
+            <!--// Submit button-->
             <input class="auth_submit-btn" type="submit" title="Submit" />
         </form>
 

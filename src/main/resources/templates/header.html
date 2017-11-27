@@ -1,23 +1,21 @@
-<nav class="header" th:fragment="header">
-    <div class="header_container">
-        <div class="header_head">
-            <a class="header_head-brand" href="/">
-                <span>HackaMap</span>
-            </a>
-        </div>
-        <!--<div class="header_nav-container">-->
+<header class="header" th:fragment="header">
+    <!--<div class="header_container">-->
+        <a class="header_head" href="/">
+            <span class="header-head_text">HackaMap</span>
+        </a>
+        <nav class="header_nav-container">
             <ul class="header_nav">
                 <li class="header_nav-item app_active-item">
-                    <a class="header_nav-item-link" href="#">
-                        <span>Sign In/Sign Up</span>
+                    <a class="header_nav-item-link" href="/login">
+                        <span class="nav-item_text">Sign In/Sign Up</span>
                     </a>
                 </li>
                 <li class="header_nav-item">
                     <a class="header_nav-item-link" href="#about">
-                        <span>Profile</span>
+                        <span class="nav-item_text">My Profile</span>
                     </a>
                 </li>
             </ul>
-        <!--</div>-->
-    </div>
-</nav>
+        </nav>
+    <!--</div>-->
+</header>

@@ -1,0 +1,152 @@
+.content {
+    width: 60%;
+    margin: auto;
+    box-sizing: border-box;
+}
+
+    .content_result {
+        display: inline-block;
+        vertical-align: top;
+        box-sizing: border-box;
+        width: 70%;
+        padding: 20px 0 0;
+    }
+
+        .result_list {
+            padding: 0;
+            margin: 0;
+        }
+
+            .result-list_item {
+                list-style: none;
+                min-height: 100px;
+                margin: 0 0 10px;
+                padding: 0;
+                border-bottom: solid 1px #E3E3E3;
+            }
+
+                .result-item_img {
+                    border: 1px solid #333333;
+                    height: 100px;
+                    width: 100px;
+                    box-sizing: border-box;
+                    float: left;
+                    margin: 0 10px 0 0;
+                }
+
+                .result-item_main-info {
+                    display: inline-block;
+                    box-sizing: border-box;
+                    width: 60%;
+                    vertical-align: top;
+                }
+
+                    .result-item_start-date {
+                        margin: 0 0 10px;
+                        color: #EF6653;
+                        font-size: 18px;
+                        font-weight: bold;
+                    }
+
+                    .result-item_title {
+                        /*display: inline-block;*/
+                        margin: 0 0 10px;
+                        color: #009EA7;
+                        font-size: 22px;
+                    }
+
+                    .result-item_title:hover {
+                        color: #09dce8;
+                    }
+
+                    .result-item_note {
+                        color: #636363;
+                    }
+
+                .result-item_aside {
+                    display: inline-block;
+                    box-sizing: border-box;
+                    width: 39%;
+                    vertical-align: top;
+                }
+
+                    .result-item_city {
+                        font-size: 18px;
+                        color: #676767;
+                        margin: 0 0 10px;
+                    }
+
+                    .result-item_social-links {
+                        margin: 0 0 10px;
+                    }
+
+                        .result-item_social-link {
+                            height: auto;
+                            display: inline-block;
+                        }
+
+                        .result-item_social-img:before {
+                            position: absolute;
+                            background-color: rgba(256, 256, 256, 0.4);
+                        }
+
+                            .result-item_social-img {
+                                width: 30px;
+                                height: 30px;
+                                vertical-align: top;
+                            }
+
+
+
+    .content_filters {
+        display: inline-block;
+        box-sizing: border-box;
+        width: 29%;/*todo correct it*/
+        padding: 20px;
+        /*border: 2px solid #009EA7;*/
+        background-color: #009EA7;
+    }
+
+        .settings {
+            margin: 0 0 15px;
+        }
+
+            .settings_title {
+                margin: 0 0 10px;
+                color: #ffffff;
+                font-size: 22px;
+            }
+
+            .settings_button {
+                display: inline-block;
+                font-size: 18px;
+                background-color: #ffffff;
+                color: #525252;
+                border: none;
+                border-radius: 3px;
+                padding: 8px 15px;
+                margin: 0 10px 10px 0;
+                cursor: pointer;
+            }
+
+            .settings_button:hover {
+                box-shadow: #E3E3E3 0 0 9px 1px, inset #E3E3E3 0px 0px 1px 0px;
+            }
+
+        .filters_form {
+
+                }
+
+            .filters_label {
+                line-height: 20px;
+                font-size: 18px;
+                color: #ffffff;
+                vertical-align: top;
+            }
+
+            .filters_checkbox {
+                margin: 0 10px 0 0;
+                width: 20px;
+                height: 20px;
+                vert-align: top;
+            }

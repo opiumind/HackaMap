@@ -14,33 +14,16 @@
 <body>
 
     <div th:replace="header :: header">...</div>
-    <!--<nav class="navbar">-->
-        <!--<div class="navbar_container">-->
-            <!--<div class="navbar-header">-->
-                <!--<a class="navbar_brand" href="/">-->
-                    <!--<span>HackaMap</span>-->
-                <!--</a>-->
-            <!--</div>-->
-            <!--&lt;!&ndash;<div id="navbar" class="collapse navbar-collapse">&ndash;&gt;-->
-            <!--&lt;!&ndash;<ul class="nav navbar-nav">&ndash;&gt;-->
-            <!--&lt;!&ndash;<li class="active"><a href="#">Home</a></li>&ndash;&gt;-->
-            <!--&lt;!&ndash;<li><a href="#about">About</a></li>&ndash;&gt;-->
-            <!--&lt;!&ndash;</ul>&ndash;&gt;-->
-            <!--&lt;!&ndash;</div>&ndash;&gt;-->
-        <!--</div>-->
-    <!--</nav>-->
-
-    <!--<div class="container">-->
-
 
     <!--Sign In Form-->
     <div class="auth" th:fragment="signin">
-        <a href="/registration">Sign Up</a>
-        <h2>Sign In</h2>
+        <!--<div class="auth_header"></div>-->
+        <a class="auth_link" href="/registration">Sign Up</a>
+        <h2 class="auth_header">Sign In</h2>
         <p class="auth_note app_note">(All fields are required)</p>
 
         <form class="auth_form" th:action="@{/login}" method="post">
-            <p class="auth_error-msg" th:if="${param.error}">Invalid username and password.</p>
+            <p class="auth_error-msg" th:if="${param.error}">Invalid username or password.</p>
             <!--th:text="${param.error}"-->
             <!--<div th:if="${param.error}">-->
                 <!--Invalid username and password.-->
@@ -60,8 +43,8 @@
 
     <!-- /.container -->
 
-    <script type="text/javascript"
-            src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--<script type="text/javascript"-->
+            <!--src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
 
 </body>
 </html>

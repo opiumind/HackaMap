@@ -1,15 +1,12 @@
 package csc202.finalprjct.controller;
 
-import java.util.Map;
-
 import csc202.finalprjct.EnumEditor;
-import csc202.finalprjct.entity.Gender;
-import csc202.finalprjct.entity.User;
-import csc202.finalprjct.entity.UserService;
+import csc202.finalprjct.entity.*;
 import csc202.finalprjct.security.service.SecurityService;
 import csc202.finalprjct.security.service.UserValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.beans.propertyeditors.CustomNumberEditor;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,10 +18,11 @@ import org.springframework.web.bind.annotation.*;
 public class MainPageController {
     @InitBinder
     public void initBinder(WebDataBinder binder) {
-
         binder.registerCustomEditor(Gender.class, new EnumEditor(Gender.class));
         /* Converts empty strings into null when a form is submitted */
         binder.registerCustomEditor(String.class, new StringTrimmerEditor(true));
+        /* For empty number fields */
+        binder.registerCustomEditor(Integer.class, new CustomNumberEditor(Integer.class, false));
     }
 
     @Autowired
@@ -32,6 +30,9 @@ public class MainPageController {
 
     @Autowired
     private SecurityService securityService;
+
+    @Autowired
+    private HackathonService hackathonService;
 
     @Autowired
     private UserValidator userValidator;
@@ -47,12 +48,32 @@ public class MainPageController {
     }
 
     @RequestMapping(value = {"/welcome"}, method = RequestMethod.GET)
-    public String welcome(Map<String, Object> model) {
-        model.put("message", this.message);
+    public String welcome(Model model) {
+        hackathonService.getHackathonsFromServer();
+
+//        String userAddress = "1600 S Eads St Arlington VA";
+//        hackathonService.getHackathonsDistancesFromServer(userAddress);
+
+        model.addAttribute("hackathonsList", hackathonService.getHackathons().toArray());
+
+//        model.put("message", this.message);
         return "welcome";
     }
 //-----------------------------------------------------------------------
 
+    @RequestMapping(value = {"/welcome/sortedByDistance"}, method = RequestMethod.GET)
+    public String welcomeSortedByDistance(Model model) {
+//        hackathonService.getHackathonsFromServer();
+
+        String userAddress = "1600 S Eads St Arlington VA";
+        hackathonService.getHackathonsDistancesFromServer(userAddress);
+
+        model.addAttribute("hackathonsList", hackathonService.getHackathonsSortedByDistance());
+
+        return "welcome";
+    }
+
+//----------------------------------------------------------------------
 
     @GetMapping("/registration")
     public String registration(Model model) {
@@ -87,7 +108,7 @@ public class MainPageController {
     public String login(Model model, String error, String logout) {
 
         if (error != null)
-            model.addAttribute("error", "Your username and password is invalid.");
+            model.addAttribute("error", "Your username or password is invalid.");
 
         if (logout != null)
             model.addAttribute("message", "You have been logged out successfully.");

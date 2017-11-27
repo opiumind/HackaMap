@@ -69,7 +69,7 @@ public class UserFileManager {
     }
 
 //    Structure of the file:
-//    <username>:<email>:<password>:<firstName>:<lastName>:<dob>:<gender>:<phone>:<profilePhotoUrl>:<ssn>
+//    <username>:<email>:<password>:<firstName>:<lastName>:<dob>:<gender>:<phone>:<profilePhotoUrl>:<ssn>:<state>:<city>:<street>:<house>:<zip>:<location>
 //    Phone structure:
 //    <countryCode>-<areaCode>-<phoneNumber>
     public static User createUser(String[] userAsArray) {
@@ -112,6 +112,25 @@ public class UserFileManager {
         }
         if (userAsArray[9].length() > 0) {
             newUser.setSsn(Integer.parseInt(userAsArray[9]));
+        }
+        if (userAsArray[10].length() > 0) {
+            newUser.setState(userAsArray[10]);
+        }
+        if (userAsArray[11].length() > 0) {
+            newUser.setCity(userAsArray[11]);
+        }
+        if (userAsArray[12].length() > 0) {
+            newUser.setStreet(userAsArray[12]);
+        }
+        if (userAsArray[13].length() > 0) {
+            newUser.setHouse(Integer.parseInt(userAsArray[13]));
+        }
+        if (userAsArray[14].length() > 0) {
+            newUser.setZip(Integer.parseInt(userAsArray[14]));
+        }
+        if (userAsArray[15].length() > 0) {
+            String[] locationAsArray = userAsArray[15].split(";");
+            newUser.setLocation(new Location(Double.parseDouble(locationAsArray[0]), Double.parseDouble(locationAsArray[1])));
         }
 
         return newUser;
