@@ -1,7 +1,11 @@
 package csc202.finalprjct.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import csc202.finalprjct.additionalServices.RequestService;
+
+import java.time.LocalDate;
+import java.time.Month;
 
 /*
 * "December": [
@@ -28,7 +32,7 @@ import csc202.finalprjct.additionalServices.RequestService;
 * */
 public class Hackathon implements Comparable<Hackathon> {
     protected String title;
-    protected String url;
+    protected String url = "";
     protected String startDate;
     protected String endDate;
     protected String year;
@@ -45,11 +49,11 @@ public class Hackathon implements Comparable<Hackathon> {
     protected String highSchoolers;
     protected String cost;
     @JsonProperty("facebookURL")
-    protected String facebookUrl;
+    protected String facebookUrl = "";
     @JsonProperty("twitterURL")
-    protected String twitterUrl;
+    protected String twitterUrl = "";
     @JsonProperty("googlePlusURL")
-    protected String googlePlusUrl;
+    protected String googlePlusUrl = "";
     protected String notes;
 
     public Hackathon() {
@@ -174,6 +178,10 @@ public class Hackathon implements Comparable<Hackathon> {
         return notes;
     }
 
+    public LocalDate getStartDateValue() {
+        String[] splittedDate = startDate.split(" ");
+        return LocalDate.of(Integer.parseInt(year), Month.valueOf(splittedDate[0].toUpperCase()), Integer.parseInt(splittedDate[1]));
+    }
 
     @Override
     public int compareTo(Hackathon o) {
@@ -192,5 +200,30 @@ public class Hackathon implements Comparable<Hackathon> {
         } else {
             return 0;
         }
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setStartDate(String startDate) {
+        this.startDate = startDate;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public void setYear(String year) {
+        this.year = year;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "'" + title + '\'' +
+                ", startDate='" + startDate + '\'' +
+                ", city='" + city + '\'' +
+                '}';
     }
 }

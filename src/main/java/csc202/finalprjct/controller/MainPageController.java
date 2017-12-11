@@ -51,9 +51,6 @@ public class MainPageController {
     public String welcome(Model model) {
         hackathonService.getHackathonsFromServer();
 
-//        String userAddress = "1600 S Eads St Arlington VA";
-//        hackathonService.getHackathonsDistancesFromServer(userAddress);
-
         model.addAttribute("hackathonsList", hackathonService.getHackathons().toArray());
 
 //        model.put("message", this.message);
@@ -66,9 +63,21 @@ public class MainPageController {
 //        hackathonService.getHackathonsFromServer();
 
         String userAddress = "1600 S Eads St Arlington VA";
-        hackathonService.getHackathonsDistancesFromServer(userAddress);
+        hackathonService.setDistancesFromUserToHackathons(userAddress);
 
         model.addAttribute("hackathonsList", hackathonService.getHackathonsSortedByDistance());
+
+        return "welcome";
+    }
+
+//-----------------------------------------------------------------------
+
+    @RequestMapping(value = {"/welcome/nonstopTour"}, method = RequestMethod.GET)
+    public String welcomeNonstopTour(Model model) {
+
+        hackathonService.createNonstopTourList();
+
+        model.addAttribute("hackathonsList", hackathonService.getNonstopTourList());
 
         return "welcome";
     }

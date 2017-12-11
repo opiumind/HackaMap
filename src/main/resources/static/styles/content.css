@@ -107,7 +107,7 @@
         background-color: #009EA7;
     }
 
-        .settings {
+        .settings, .features {
             margin: 0 0 15px;
         }
 
@@ -118,7 +118,7 @@
             }
 
             .settings_button {
-                display: inline-block;
+                display: block;
                 font-size: 18px;
                 background-color: #ffffff;
                 color: #525252;
@@ -127,10 +127,29 @@
                 padding: 8px 15px;
                 margin: 0 10px 10px 0;
                 cursor: pointer;
+                text-align: center;
             }
 
             .settings_button:hover {
                 box-shadow: #E3E3E3 0 0 9px 1px, inset #E3E3E3 0px 0px 1px 0px;
+            }
+
+            .features_button {
+                display: block;
+                font-size: 18px;
+                background-color: #ffffff;
+                color: #525252;
+                border: 2px dotted #F23C34;
+                box-shadow: rgba(0,0,0,0.3) 0 0 6px 1px, inset rgba(0,0,0,0.4) -2px -2px 11px 0px, inset rgba(255,255,255,0.5) 1px 0px 11px 3px;
+                border-radius: 3px;
+                padding: 8px 15px;
+                margin: 0 10px 10px 0;
+                cursor: pointer;
+                text-align: center;
+            }
+
+            .features_button:hover {
+                box-shadow: rgba(0,0,0,0.3) 0 0 6px 1px, inset rgba(0,0,0,0.4) -2px -2px 11px 0px, inset rgba(255,255,255,0.5) 1px 0px 11px 3px, inset #F23C34 0 0 9px 2px;
             }
 
         .filters_form {
